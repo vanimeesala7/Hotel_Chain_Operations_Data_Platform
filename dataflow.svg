@@ -1,0 +1,96 @@
+<svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+
+  <rect width="900" height="340" fill="#0f172a" rx="12"/>
+
+  <text x="450" y="35" text-anchor="middle" fill="#f1f5f9" font-size="16" font-weight="700">Data Flow Pipeline</text>
+
+  <!-- Step boxes -->
+  <!-- 1. S3 -->
+  <rect x="30" y="70" width="120" height="80" fill="#1e293b" rx="10" stroke="#f59e0b" stroke-width="2"/>
+  <text x="90" y="102" text-anchor="middle" fill="#fbbf24" font-size="22">☁</text>
+  <text x="90" y="122" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="700">AWS S3</text>
+  <text x="90" y="138" text-anchor="middle" fill="#92400e" font-size="9">CSV Files</text>
+
+  <!-- 2. Snowpipe -->
+  <rect x="195" y="70" width="120" height="80" fill="#1e293b" rx="10" stroke="#a855f7" stroke-width="2"/>
+  <text x="255" y="100" text-anchor="middle" fill="#c084fc" font-size="11" font-weight="700">❄ Snowpipe</text>
+  <text x="255" y="116" text-anchor="middle" fill="#7e22ce" font-size="9">AUTO_INGEST</text>
+  <text x="255" y="129" text-anchor="middle" fill="#7e22ce" font-size="9">SQS Trigger</text>
+  <text x="255" y="142" text-anchor="middle" fill="#7e22ce" font-size="9">5 Pipes</text>
+
+  <!-- 3. RAW -->
+  <rect x="360" y="70" width="120" height="80" fill="#1e293b" rx="10" stroke="#3b82f6" stroke-width="2"/>
+  <text x="420" y="100" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="700">RAW Layer</text>
+  <text x="420" y="116" text-anchor="middle" fill="#1d4ed8" font-size="9">All VARCHAR</text>
+  <text x="420" y="129" text-anchor="middle" fill="#1d4ed8" font-size="9">No transforms</text>
+  <text x="420" y="142" text-anchor="middle" fill="#1d4ed8" font-size="9">5 Tables</text>
+
+  <!-- 4. VALIDATED -->
+  <rect x="525" y="70" width="120" height="80" fill="#1e293b" rx="10" stroke="#16a34a" stroke-width="2"/>
+  <text x="585" y="96" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="700">VALIDATED</text>
+  <text x="585" y="112" text-anchor="middle" fill="#166534" font-size="9">Type Cast</text>
+  <text x="585" y="125" text-anchor="middle" fill="#166534" font-size="9">Dedup + DQ</text>
+  <text x="585" y="138" text-anchor="middle" fill="#166534" font-size="9">Ref Integrity</text>
+
+  <!-- 5. CURATED -->
+  <rect x="690" y="70" width="120" height="80" fill="#1e293b" rx="10" stroke="#ea580c" stroke-width="2"/>
+  <text x="750" y="96" text-anchor="middle" fill="#fb923c" font-size="11" font-weight="700">CURATED</text>
+  <text x="750" y="112" text-anchor="middle" fill="#c2410c" font-size="9">Kimball Model</text>
+  <text x="750" y="125" text-anchor="middle" fill="#c2410c" font-size="9">Dims + Facts</text>
+  <text x="750" y="138" text-anchor="middle" fill="#c2410c" font-size="9">KPI Views</text>
+
+  <!-- Arrows between steps -->
+  <line x1="150" y1="110" x2="193" y2="110" stroke="#f59e0b" stroke-width="2" marker-end="url(#a1)"/>
+  <line x1="315" y1="110" x2="358" y2="110" stroke="#a855f7" stroke-width="2" marker-end="url(#a2)"/>
+  <line x1="480" y1="110" x2="523" y2="110" stroke="#3b82f6" stroke-width="2" marker-end="url(#a3)"/>
+  <line x1="645" y1="110" x2="688" y2="110" stroke="#16a34a" stroke-width="2" marker-end="url(#a4)"/>
+
+  <!-- Step labels above arrows -->
+  <text x="172" y="102" text-anchor="middle" fill="#f59e0b" font-size="8">upload</text>
+  <text x="336" y="102" text-anchor="middle" fill="#a855f7" font-size="8">COPY INTO</text>
+  <text x="501" y="102" text-anchor="middle" fill="#3b82f6" font-size="8">MERGE</text>
+  <text x="666" y="102" text-anchor="middle" fill="#16a34a" font-size="8">INSERT</text>
+
+  <!-- Bottom row: side outputs -->
+  <!-- Streams -->
+  <rect x="360" y="200" width="120" height="55" fill="#1e293b" rx="8" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="420" y="222" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="600">⟳ Streams</text>
+  <text x="420" y="238" text-anchor="middle" fill="#312e81" font-size="9">Capture CDC</text>
+  <text x="420" y="250" text-anchor="middle" fill="#312e81" font-size="9">5 Streams</text>
+  <line x1="420" y1="150" x2="420" y2="200" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a5)"/>
+
+  <!-- Tasks -->
+  <rect x="525" y="200" width="120" height="55" fill="#1e293b" rx="8" stroke="#0891b2" stroke-width="1.5"/>
+  <text x="585" y="222" text-anchor="middle" fill="#67e8f9" font-size="10" font-weight="600">⏰ Tasks</text>
+  <text x="585" y="238" text-anchor="middle" fill="#0e7490" font-size="9">Hourly Merge</text>
+  <text x="585" y="250" text-anchor="middle" fill="#0e7490" font-size="9">Daily Anomaly</text>
+  <line x1="585" y1="150" x2="585" y2="200" stroke="#0891b2" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a6)"/>
+
+  <!-- Anomaly Log -->
+  <rect x="690" y="200" width="120" height="55" fill="#1e293b" rx="8" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="750" y="222" text-anchor="middle" fill="#fca5a5" font-size="10" font-weight="600">🚨 Anomalies</text>
+  <text x="750" y="238" text-anchor="middle" fill="#7f1d1d" font-size="9">5 Rules</text>
+  <text x="750" y="250" text-anchor="middle" fill="#7f1d1d" font-size="9">ANOMALY_LOG</text>
+  <line x1="750" y1="150" x2="750" y2="200" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a7)"/>
+
+  <!-- Streamlit output -->
+  <rect x="360" y="285" width="450" height="42" fill="#1e293b" rx="8" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="585" y="308" text-anchor="middle" fill="#22d3ee" font-size="11" font-weight="700">❄ Streamlit in Snowflake — Analytics Dashboard</text>
+  <text x="585" y="322" text-anchor="middle" fill="#164e63" font-size="9">KPI Cards · Bar Charts · Line Charts · 4 Tabs · Dark Theme</text>
+  <line x1="750" y1="255" x2="750" y2="275" stroke="#06b6d4" stroke-width="1.5"/>
+  <line x1="750" y1="275" x2="585" y2="275" stroke="#06b6d4" stroke-width="1.5"/>
+  <line x1="585" y1="275" x2="585" y2="285" stroke="#06b6d4" stroke-width="1.5" marker-end="url(#a8)"/>
+
+  <!-- Markers -->
+  <defs>
+    <marker id="a1" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#f59e0b"/></marker>
+    <marker id="a2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#a855f7"/></marker>
+    <marker id="a3" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#3b82f6"/></marker>
+    <marker id="a4" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#16a34a"/></marker>
+    <marker id="a5" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#6366f1"/></marker>
+    <marker id="a6" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#0891b2"/></marker>
+    <marker id="a7" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#dc2626"/></marker>
+    <marker id="a8" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#06b6d4"/></marker>
+  </defs>
+
+</svg>

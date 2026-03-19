@@ -1,0 +1,213 @@
+<svg viewBox="0 0 1000 620" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="1000" height="620" fill="#0f172a" rx="12"/>
+
+  <!-- Title -->
+  <text x="500" y="40" text-anchor="middle" fill="#f1f5f9" font-size="20" font-weight="700" letter-spacing="1">
+    StaySphere Hotel Chain — Data Platform Architecture
+  </text>
+  <text x="500" y="62" text-anchor="middle" fill="#64748b" font-size="12">
+    Medallion Architecture on Snowflake · AWS S3 · Streamlit
+  </text>
+
+  <!-- ═══ SOURCE LAYER ═══ -->
+  <rect x="20" y="90" width="160" height="480" fill="#1e293b" rx="10" stroke="#334155" stroke-width="1.5"/>
+  <text x="100" y="112" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="600" letter-spacing="1.5">SOURCE FILES</text>
+
+  <!-- CSV boxes -->
+  <rect x="35" y="122" width="130" height="36" fill="#0f172a" rx="6" stroke="#3b82f6" stroke-width="1"/>
+  <text x="100" y="138" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="600">guests_master.csv</text>
+  <text x="100" y="152" text-anchor="middle" fill="#64748b" font-size="9">guests_inc.csv</text>
+
+  <rect x="35" y="167" width="130" height="36" fill="#0f172a" rx="6" stroke="#3b82f6" stroke-width="1"/>
+  <text x="100" y="183" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="600">reservations_master.csv</text>
+  <text x="100" y="197" text-anchor="middle" fill="#64748b" font-size="9">reservations_inc.csv</text>
+
+  <rect x="35" y="212" width="130" height="36" fill="#0f172a" rx="6" stroke="#3b82f6" stroke-width="1"/>
+  <text x="100" y="228" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="600">rooms_master.csv</text>
+  <text x="100" y="242" text-anchor="middle" fill="#64748b" font-size="9">rooms_inc.csv</text>
+
+  <rect x="35" y="257" width="130" height="36" fill="#0f172a" rx="6" stroke="#3b82f6" stroke-width="1"/>
+  <text x="100" y="273" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="600">housekeeping_master.csv</text>
+  <text x="100" y="287" text-anchor="middle" fill="#64748b" font-size="9">housekeeping_inc.csv</text>
+
+  <rect x="35" y="302" width="130" height="36" fill="#0f172a" rx="6" stroke="#3b82f6" stroke-width="1"/>
+  <text x="100" y="318" text-anchor="middle" fill="#93c5fd" font-size="10" font-weight="600">billing_master.csv</text>
+  <text x="100" y="332" text-anchor="middle" fill="#64748b" font-size="9">billing_inc.csv</text>
+
+  <!-- ═══ AWS S3 ═══ -->
+  <rect x="210" y="130" width="120" height="80" fill="#1e293b" rx="10" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="270" y="158" text-anchor="middle" fill="#fbbf24" font-size="22">☁</text>
+  <text x="270" y="178" text-anchor="middle" fill="#fcd34d" font-size="11" font-weight="700">AWS S3</text>
+  <text x="270" y="193" text-anchor="middle" fill="#92400e" font-size="9">hotel-chain-account-bucket</text>
+
+  <!-- S3 arrows from source -->
+  <line x1="165" y1="248" x2="210" y2="200" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr)"/>
+
+  <!-- ═══ SNOWPIPE ═══ -->
+  <rect x="210" y="240" width="120" height="60" fill="#1e293b" rx="10" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="270" y="265" text-anchor="middle" fill="#c084fc" font-size="11" font-weight="700">❄ Snowpipe</text>
+  <text x="270" y="280" text-anchor="middle" fill="#7e22ce" font-size="9">AUTO_INGEST = TRUE</text>
+  <text x="270" y="292" text-anchor="middle" fill="#7e22ce" font-size="9">SQS Event Trigger</text>
+
+  <!-- S3 → Snowpipe -->
+  <line x1="270" y1="210" x2="270" y2="240" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ═══ RAW LAYER ═══ -->
+  <rect x="360" y="90" width="145" height="480" fill="#1e293b" rx="10" stroke="#334155" stroke-width="1.5"/>
+  <rect x="360" y="90" width="145" height="30" fill="#1e3a5f" rx="10"/>
+  <rect x="360" y="110" width="145" height="10" fill="#1e3a5f"/>
+  <text x="432" y="111" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="700" letter-spacing="1">RAW LAYER</text>
+
+  <rect x="372" y="128" width="121" height="26" fill="#0f172a" rx="5" stroke="#1d4ed8" stroke-width="1"/>
+  <text x="432" y="146" text-anchor="middle" fill="#93c5fd" font-size="10">GUESTS</text>
+  <rect x="372" y="162" width="121" height="26" fill="#0f172a" rx="5" stroke="#1d4ed8" stroke-width="1"/>
+  <text x="432" y="180" text-anchor="middle" fill="#93c5fd" font-size="10">RESERVATIONS</text>
+  <rect x="372" y="196" width="121" height="26" fill="#0f172a" rx="5" stroke="#1d4ed8" stroke-width="1"/>
+  <text x="432" y="214" text-anchor="middle" fill="#93c5fd" font-size="10">ROOMS</text>
+  <rect x="372" y="230" width="121" height="26" fill="#0f172a" rx="5" stroke="#1d4ed8" stroke-width="1"/>
+  <text x="432" y="248" text-anchor="middle" fill="#93c5fd" font-size="10">HOUSEKEEPING</text>
+  <rect x="372" y="264" width="121" height="26" fill="#0f172a" rx="5" stroke="#1d4ed8" stroke-width="1"/>
+  <text x="432" y="282" text-anchor="middle" fill="#93c5fd" font-size="10">BILLING</text>
+
+  <!-- Streams label -->
+  <rect x="372" y="305" width="121" height="30" fill="#312e81" rx="5" stroke="#6366f1" stroke-width="1"/>
+  <text x="432" y="324" text-anchor="middle" fill="#a5b4fc" font-size="10" font-weight="600">⟳ Streams (5)</text>
+
+  <!-- Snowpipe → RAW -->
+  <line x1="330" y1="270" x2="360" y2="220" stroke="#a855f7" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ═══ VALIDATED LAYER ═══ -->
+  <rect x="535" y="90" width="145" height="480" fill="#1e293b" rx="10" stroke="#334155" stroke-width="1.5"/>
+  <rect x="535" y="90" width="145" height="30" fill="#14532d" rx="10"/>
+  <rect x="535" y="110" width="145" height="10" fill="#14532d"/>
+  <text x="607" y="111" text-anchor="middle" fill="#4ade80" font-size="11" font-weight="700" letter-spacing="1">VALIDATED</text>
+
+  <rect x="547" y="128" width="121" height="26" fill="#0f172a" rx="5" stroke="#16a34a" stroke-width="1"/>
+  <text x="607" y="146" text-anchor="middle" fill="#86efac" font-size="10">GUESTS ✓</text>
+  <rect x="547" y="162" width="121" height="26" fill="#0f172a" rx="5" stroke="#16a34a" stroke-width="1"/>
+  <text x="607" y="180" text-anchor="middle" fill="#86efac" font-size="10">RESERVATIONS ✓</text>
+  <rect x="547" y="196" width="121" height="26" fill="#0f172a" rx="5" stroke="#16a34a" stroke-width="1"/>
+  <text x="607" y="214" text-anchor="middle" fill="#86efac" font-size="10">ROOMS ✓</text>
+  <rect x="547" y="230" width="121" height="26" fill="#0f172a" rx="5" stroke="#16a34a" stroke-width="1"/>
+  <text x="607" y="248" text-anchor="middle" fill="#86efac" font-size="10">HOUSEKEEPING ✓</text>
+  <rect x="547" y="264" width="121" height="26" fill="#0f172a" rx="5" stroke="#16a34a" stroke-width="1"/>
+  <text x="607" y="282" text-anchor="middle" fill="#86efac" font-size="10">BILLING ✓</text>
+
+  <!-- DQ label -->
+  <rect x="547" y="305" width="121" height="30" fill="#1c1917" rx="5" stroke="#78716c" stroke-width="1"/>
+  <text x="607" y="320" text-anchor="middle" fill="#a8a29e" font-size="9">Dedup · Type Cast</text>
+  <text x="607" y="330" text-anchor="middle" fill="#a8a29e" font-size="9">Ref Integrity · DQ</text>
+
+  <!-- RAW → VALIDATED arrow -->
+  <line x1="505" y1="220" x2="535" y2="220" stroke="#16a34a" stroke-width="2" marker-end="url(#arr2)"/>
+  <text x="520" y="213" text-anchor="middle" fill="#4ade80" font-size="8">MERGE</text>
+
+  <!-- ═══ CURATED LAYER ═══ -->
+  <rect x="710" y="90" width="160" height="480" fill="#1e293b" rx="10" stroke="#334155" stroke-width="1.5"/>
+  <rect x="710" y="90" width="160" height="30" fill="#451a03" rx="10"/>
+  <rect x="710" y="110" width="160" height="10" fill="#451a03"/>
+  <text x="790" y="111" text-anchor="middle" fill="#fb923c" font-size="11" font-weight="700" letter-spacing="1">CURATED (KIMBALL)</text>
+
+  <!-- Dims -->
+  <rect x="720" y="128" width="140" height="22" fill="#0f172a" rx="5" stroke="#c2410c" stroke-width="1"/>
+  <text x="790" y="144" text-anchor="middle" fill="#fdba74" font-size="9.5">📐 DIM_HOTEL</text>
+  <rect x="720" y="155" width="140" height="22" fill="#0f172a" rx="5" stroke="#c2410c" stroke-width="1"/>
+  <text x="790" y="171" text-anchor="middle" fill="#fdba74" font-size="9.5">📐 DIM_GUEST (SCD-2)</text>
+  <rect x="720" y="182" width="140" height="22" fill="#0f172a" rx="5" stroke="#c2410c" stroke-width="1"/>
+  <text x="790" y="198" text-anchor="middle" fill="#fdba74" font-size="9.5">📐 DIM_ROOM (SCD-2)</text>
+  <rect x="720" y="209" width="140" height="22" fill="#0f172a" rx="5" stroke="#c2410c" stroke-width="1"/>
+  <text x="790" y="225" text-anchor="middle" fill="#fdba74" font-size="9.5">📅 DIM_DATE</text>
+
+  <!-- Facts -->
+  <rect x="720" y="242" width="140" height="22" fill="#1c0a00" rx="5" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="790" y="258" text-anchor="middle" fill="#fed7aa" font-size="9.5" font-weight="600">📊 FACT_RESERVATION</text>
+  <rect x="720" y="269" width="140" height="22" fill="#1c0a00" rx="5" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="790" y="285" text-anchor="middle" fill="#fed7aa" font-size="9.5" font-weight="600">📊 FACT_HOUSEKEEPING</text>
+  <rect x="720" y="296" width="140" height="22" fill="#1c0a00" rx="5" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="790" y="312" text-anchor="middle" fill="#fed7aa" font-size="9.5" font-weight="600">📊 FACT_BILLING</text>
+
+  <!-- KPI Views -->
+  <rect x="720" y="330" width="140" height="80" fill="#0c0a00" rx="5" stroke="#d97706" stroke-width="1"/>
+  <text x="790" y="346" text-anchor="middle" fill="#fcd34d" font-size="9" font-weight="600">📈 KPI VIEWS</text>
+  <text x="790" y="360" text-anchor="middle" fill="#92400e" font-size="8">VW_KPI_OCCUPANCY</text>
+  <text x="790" y="372" text-anchor="middle" fill="#92400e" font-size="8">VW_KPI_CONVERSION</text>
+  <text x="790" y="384" text-anchor="middle" fill="#92400e" font-size="8">VW_KPI_HK_SLA</text>
+  <text x="790" y="396" text-anchor="middle" fill="#92400e" font-size="8">VW_KPI_REVPAR</text>
+  <text x="790" y="408" text-anchor="middle" fill="#92400e" font-size="8">VW_KPI_BILLING_ACCURACY</text>
+
+  <!-- VALIDATED → CURATED arrow -->
+  <line x1="680" y1="220" x2="710" y2="220" stroke="#ea580c" stroke-width="2" marker-end="url(#arr3)"/>
+
+  <!-- ═══ AUDIT LAYER ═══ (bottom) -->
+  <rect x="360" y="400" width="320" height="100" fill="#1e293b" rx="10" stroke="#475569" stroke-width="1.5"/>
+  <text x="520" y="420" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="600" letter-spacing="1">AUDIT SCHEMA</text>
+  <rect x="372" y="428" width="90" height="28" fill="#0f172a" rx="5" stroke="#475569" stroke-width="1"/>
+  <text x="417" y="447" text-anchor="middle" fill="#94a3b8" font-size="9">LOAD_LOG</text>
+  <rect x="472" y="428" width="90" height="28" fill="#0f172a" rx="5" stroke="#475569" stroke-width="1"/>
+  <text x="517" y="447" text-anchor="middle" fill="#94a3b8" font-size="9">DQ_EXCEPTIONS</text>
+  <rect x="572" y="428" width="96" height="28" fill="#0f172a" rx="5" stroke="#475569" stroke-width="1"/>
+  <text x="620" y="447" text-anchor="middle" fill="#94a3b8" font-size="9">ANOMALY_LOG</text>
+
+  <text x="520" y="478" text-anchor="middle" fill="#64748b" font-size="9">Stored Procedures: SP_DOUBLE_BOOKING · SP_HK_SLA_BREACH · SP_BILLING_MISMATCH · SP_SUSPICIOUS_CANCELLATION</text>
+  <text x="520" y="490" text-anchor="middle" fill="#64748b" font-size="9">Tasks: TASK_INCREMENTAL_MERGE (hourly) · TASK_DAILY_ANOMALY (2am UTC)</text>
+
+  <!-- ═══ STREAMLIT ═══ -->
+  <rect x="710" y="430" width="160" height="80" fill="#1e293b" rx="10" stroke="#06b6d4" stroke-width="1.5"/>
+  <text x="790" y="452" text-anchor="middle" fill="#22d3ee" font-size="20">❄</text>
+  <text x="790" y="472" text-anchor="middle" fill="#67e8f9" font-size="11" font-weight="700">Streamlit in Snowflake</text>
+  <text x="790" y="488" text-anchor="middle" fill="#164e63" font-size="9">KPI Dashboard · Altair Charts</text>
+  <text x="790" y="500" text-anchor="middle" fill="#164e63" font-size="9">4 Tabs · 12 Visualizations</text>
+
+  <!-- Curated → Streamlit -->
+  <line x1="790" y1="424" x2="790" y2="430" stroke="#06b6d4" stroke-width="1.5" marker-end="url(#arr4)"/>
+
+  <!-- ═══ SECURITY BADGE ═══ -->
+  <rect x="20" y="440" width="160" height="90" fill="#1e293b" rx="10" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="100" y="460" text-anchor="middle" fill="#c084fc" font-size="11" font-weight="600" letter-spacing="1">SECURITY</text>
+  <text x="100" y="478" text-anchor="middle" fill="#7e22ce" font-size="9">🔒 Dynamic Data Masking</text>
+  <text x="100" y="492" text-anchor="middle" fill="#7e22ce" font-size="9">   Email · Phone (PII)</text>
+  <text x="100" y="506" text-anchor="middle" fill="#7e22ce" font-size="9">🔑 Row Level Security</text>
+  <text x="100" y="520" text-anchor="middle" fill="#7e22ce" font-size="9">   ACCOUNTADMIN role</text>
+
+  <!-- ═══ LEGEND ═══ -->
+  <rect x="20" y="550" width="960" height="55" fill="#1e293b" rx="8" stroke="#334155" stroke-width="1"/>
+  <text x="40" y="568" fill="#64748b" font-size="10" font-weight="600">LEGEND:</text>
+  <rect x="100" y="558" width="10" height="10" fill="#3b82f6" rx="2"/>
+  <text x="115" y="568" fill="#94a3b8" font-size="9">Source CSV</text>
+  <rect x="190" y="558" width="10" height="10" fill="#a855f7" rx="2"/>
+  <text x="205" y="568" fill="#94a3b8" font-size="9">Snowpipe</text>
+  <rect x="270" y="558" width="10" height="10" fill="#1d4ed8" rx="2"/>
+  <text x="285" y="568" fill="#94a3b8" font-size="9">RAW Layer</text>
+  <rect x="360" y="558" width="10" height="10" fill="#16a34a" rx="2"/>
+  <text x="375" y="568" fill="#94a3b8" font-size="9">VALIDATED Layer</text>
+  <rect x="470" y="558" width="10" height="10" fill="#ea580c" rx="2"/>
+  <text x="485" y="568" fill="#94a3b8" font-size="9">CURATED (Kimball)</text>
+  <rect x="590" y="558" width="10" height="10" fill="#06b6d4" rx="2"/>
+  <text x="605" y="568" fill="#94a3b8" font-size="9">Streamlit Dashboard</text>
+  <rect x="710" y="558" width="10" height="10" fill="#475569" rx="2"/>
+  <text x="725" y="568" fill="#94a3b8" font-size="9">Audit &amp; Anomaly</text>
+  <rect x="820" y="558" width="10" height="10" fill="#7c3aed" rx="2"/>
+  <text x="835" y="568" fill="#94a3b8" font-size="9">Security / Governance</text>
+
+  <!-- Footer -->
+  <text x="500" y="598" text-anchor="middle" fill="#334155" font-size="9">StaySphere · Snowflake Hackathon · Medallion Architecture: RAW → VALIDATED → CURATED</text>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#a855f7"/>
+    </marker>
+    <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#16a34a"/>
+    </marker>
+    <marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#ea580c"/>
+    </marker>
+    <marker id="arr4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#06b6d4"/>
+    </marker>
+  </defs>
+
+</svg>
