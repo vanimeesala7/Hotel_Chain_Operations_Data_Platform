@@ -214,3 +214,4 @@ Open Streamlit in Snowflake → paste `staysphere_streamlit.py` → Run.
 
 **StaySphere Hackathon Project**  
 Built on Snowflake · AWS S3 · Streamlit
+**Code Captain -- Vani Meesala**
